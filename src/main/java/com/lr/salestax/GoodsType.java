@@ -1,9 +1,6 @@
 
 package com.lr.salestax;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 /**
  * Description: Description goes here.
  * 
@@ -11,7 +8,25 @@ import org.junit.runners.JUnit4;
  * @version $Revision$ $Date$
  * @since 0.1
  */
-@RunWith(JUnit4.class)
-public class SalesTaxCalculationTestCase {
+public enum GoodsType {
 
+	/**
+	 * 
+	 */
+	BOOKS,
+
+	/**
+	 * 
+	 */
+	FOOD,
+
+	/**
+	 * 
+	 */
+	MEDICAL_PRODUCTS,
+
+	/**
+	 * 
+	 */
+	MISC_GOODS;
 }
