@@ -38,8 +38,12 @@ public class SalesTaxTransaction
 	 */
 	@Override
 	public void compute() {
-		// TODO Auto-generated method stub
 
+		final CalculateSalesTaxVisitor salesTaxVisitor = new CalculateSalesTaxVisitor();
+		for (final Goods goods : _listOfGoods) {
+			goods.welcome(salesTaxVisitor);
+		}
+		printOutput(salesTaxVisitor);
 	}
 
 	/**
@@ -47,6 +51,19 @@ public class SalesTaxTransaction
 	 */
 	public List<Goods> getListOfGoods() {
 		return Collections.unmodifiableList(_listOfGoods);
+	}
+
+	/**
+	 * @param salesTaxVisitor
+	 */
+	private void printOutput(CalculateSalesTaxVisitor salesTaxVisitor) {
+		for (final String output : salesTaxVisitor.getOutput()) {
+
+			System.out.println(output);
+		}
+
+		System.out.println("Sales Taxes :" + salesTaxVisitor.getSalesTax());
+		System.out.println("Total :" + salesTaxVisitor.getTotal());
 	}
 
 }

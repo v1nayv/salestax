@@ -1,6 +1,7 @@
 
 package com.lr.salestax.goods.impl;
 
+import com.lr.salestax.GoodsVisitor;
 import com.lr.salestax.goods.Goods;
 
 /**
@@ -31,8 +32,19 @@ public class MiscGoods
 	 */
 	@Override
 	public double getSalesTaxAmount() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return getNoOfItems() * getGoodsCostPerItem() * SALES_TAX;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see com.lr.salestax.goods.Goods#welcome(com.lr.salestax.GoodsVisitor)
+	 */
+	@Override
+	public void welcome(GoodsVisitor visitor) {
+		visitor.visit(this);
+
 	}
 
 }

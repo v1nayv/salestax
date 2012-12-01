@@ -24,7 +24,7 @@ import com.lr.salestax.goods.impl.MiscGoods;
  */
 public class SalesTaxFileInputParserTestCase {
 
-	private static final String PATH_TO_INPUT_FILE = "src/test/resources/sampleinput.txt";
+	private static final String PATH_TO_INPUT_FILE = "src/test/resources/sampletestinput.txt";
 
 	/**
 	 * 
@@ -37,10 +37,14 @@ public class SalesTaxFileInputParserTestCase {
 		final SalesTaxTransaction transaction = (SalesTaxTransaction) inputParser.parseInput(new File(PATH_TO_INPUT_FILE));
 
 		final List<Goods> goodsList = transaction.getListOfGoods();
-		final Goods miscGoods = goodsList.get(0);
-		final Goods medicalGoods = goodsList.get(1);
-		final Goods foodGoods = goodsList.get(2);
+		assertEquals("Wrong no. of goods were put in the list", 4, goodsList.size());
 
+		final Goods miscImportedGoods = goodsList.get(0);
+		final Goods miscGoods = goodsList.get(1);
+		final Goods medicalGoods = goodsList.get(2);
+		final Goods foodGoods = goodsList.get(3);
+
+		assertMiscImportedGoods(miscImportedGoods);
 		assertMiscGoods(miscGoods);
 		assertMedicalGoods(medicalGoods);
 		assertFoodGoods(foodGoods);
@@ -78,6 +82,17 @@ public class SalesTaxFileInputParserTestCase {
 		assertEquals("Cost per item is wrong", Double.valueOf(18.99), Double.valueOf(miscGoods.getGoodsCostPerItem()));
 		assertEquals("No.of  item is wrong", Double.valueOf(1.0), Double.valueOf(miscGoods.getNoOfItems()));
 		assertFalse("isImported has wrong value", miscGoods.isImported());
+
+	}
+
+	/**
+	 * @param miscImportedGoods
+	 */
+	private void assertMiscImportedGoods(Goods miscImportedGoods) {
+		assertTrue("Wrong type of Goods", miscImportedGoods instanceof MiscGoods);
+		assertEquals("Cost per item is wrong", Double.valueOf(27.99), Double.valueOf(miscImportedGoods.getGoodsCostPerItem()));
+		assertEquals("No.of  item is wrong", Double.valueOf(1.0), Double.valueOf(miscImportedGoods.getNoOfItems()));
+		assertTrue("isImported has wrong value", miscImportedGoods.isImported());
 
 	}
 }

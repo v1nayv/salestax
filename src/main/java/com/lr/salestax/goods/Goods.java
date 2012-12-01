@@ -1,6 +1,8 @@
 
 package com.lr.salestax.goods;
 
+import com.lr.salestax.GoodsVisitor;
+
 /**
  * Description: Description goes here.
  * 
@@ -56,6 +58,14 @@ public abstract class Goods {
 	}
 
 	/**
+	 * @return imported duty tax amount.
+	 */
+	public double getImportedDutyTaxAmount() {
+
+		return _goodsCostPerItem * _noOfItems * IMPORTED_DUTY_TAX;
+	}
+
+	/**
 	 * @return the noOfItems
 	 */
 	public double getNoOfItems() {
@@ -75,11 +85,8 @@ public abstract class Goods {
 	}
 
 	/**
-	 * @return imported duty tax amount.
+	 * @param visitor
 	 */
-	protected double getImportedDutyTaxAmount() {
-
-		return _goodsCostPerItem * _noOfItems * IMPORTED_DUTY_TAX;
-	}
+	public abstract void welcome(final GoodsVisitor visitor);
 
 }

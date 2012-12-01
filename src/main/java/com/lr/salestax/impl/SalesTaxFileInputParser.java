@@ -80,9 +80,9 @@ public class SalesTaxFileInputParser
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		while (scanner.hasNext()) {
-			scanner.nextLine();
-			scanner.findInLine(INPUT_REGEX);
+		while (scanner.hasNextLine()) {
+			@SuppressWarnings("unused")
+			String line = scanner.findInLine(INPUT_REGEX);
 			MatchResult result = scanner.match();
 			final double noOfItems = Double.parseDouble(result.group(NO_OF_ITEMS_INDEX));
 			final String goodsDescription = result.group(GOODS_DESCRIPTION_INDEX);
@@ -91,6 +91,10 @@ public class SalesTaxFileInputParser
 			final boolean isImported = isImported(goodsDescription);
 
 			((SalesTaxTransaction) transaction).addGoods(_goodsFactory.createGoods(goodsType, noOfItems, goodsDescription, goodsCostPerItem, isImported));
+
+			if (scanner.hasNextLine()) {
+				scanner.nextLine();
+			}
 
 		}
 		scanner.close();

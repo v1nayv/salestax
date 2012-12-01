@@ -20,7 +20,8 @@ public class SalesTaxCalculation {
 	public static void main(String[] args) {
 
 		final InputParser<File> inputParser = new SalesTaxFileInputParser();
-		inputParser.parseInput(new File(args[0]));
+		final Transaction transaction = inputParser.parseInput(new File(args[0]));
+		transaction.compute();
 
 	}
 }
