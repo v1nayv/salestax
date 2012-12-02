@@ -121,10 +121,10 @@ public final class CalculateSalesTaxVisitor
 	private double calculateTotal(final Goods goods) {
 		double total = 0;
 		if (goods.isImported()) {
-			total += goods.getImportedDutyTaxAmount();
+			total += roundOfSalesTax(goods.getImportedDutyTaxAmount());
 		}
 
-		return total + (goods.getNoOfItems() * goods.getGoodsCostPerItem() + roundOfSalesTax(goods.getSalesTaxAmount()));
+		return total + (goods.getNoOfItems() * goods.getGoodsCostPerItem() + goods.getSalesTaxAmount());
 	}
 
 	private void processGoods(final Goods goods) {

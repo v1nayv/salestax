@@ -54,6 +54,33 @@ public class CalculateSalesTaxVisitorTestCase {
 	}
 
 	/**
+	 * 
+	 */
+	@Test
+	public void testTransactionForImportedGoods() {
+		final List<Goods> goodsList = getImportedMockGoods();
+		process(goodsList);
+		final List<String> output = _calculateSalesTaxVisitor.getOutput();
+		final String salesTax = _calculateSalesTaxVisitor.getSalesTaxAsString();
+		final String total = _calculateSalesTaxVisitor.getTotalAsString();
+
+		assertEquals("Output size  was not as expected", 2, output.size());
+		assertEquals("Output was not as expected", "1 imported box of chocolates : 10.5", output.get(0));
+		assertEquals("Output was not as expected", "1 imported bottle of perfume : 54.65", output.get(1));
+		assertEquals("Sales Tax was not as expected", "7.65", salesTax);
+		assertEquals("Total was not as expected", "65.15", total);
+
+	}
+
+	private List<Goods> getImportedMockGoods() {
+
+		final Goods food = new Food("imported box of chocolates", 10.00, 1, true);
+		final Goods miscGoods = new MiscGoods("imported bottle of perfume", 47.50, 1, true);
+
+		return asList(food, miscGoods);
+	}
+
+	/**
 	 * @return
 	 */
 	private List<Goods> getMockGoods() {
