@@ -24,7 +24,7 @@ public class GoodsFactory {
 	 * @param isImported
 	 * @return Goods object
 	 */
-	public Goods createGoods(final GoodsType type, final double noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
+	public Goods createGoods(final GoodsType type, final int noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
 
 		final Goods goodsObjToReturn;
 		switch (type) {
@@ -58,7 +58,7 @@ public class GoodsFactory {
 	 * @param isImported
 	 * @return
 	 */
-	private Goods createBook(double noOfItems, String goodsDescription, double goodsCostPerItem, boolean isImported) {
+	private Goods createBook(final int noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
 
 		return new Books(goodsDescription, goodsCostPerItem, noOfItems, isImported);
 	}
@@ -70,7 +70,7 @@ public class GoodsFactory {
 	 * @param isImported
 	 * @return
 	 */
-	private Goods createFood(double noOfItems, String goodsDescription, double goodsCostPerItem, boolean isImported) {
+	private Goods createFood(final int noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
 
 		return new Food(goodsDescription, goodsCostPerItem, noOfItems, isImported);
 	}
@@ -82,7 +82,7 @@ public class GoodsFactory {
 	 * @param isImported
 	 * @return
 	 */
-	private Goods createMedicalProducts(double noOfItems, String goodsDescription, double goodsCostPerItem, boolean isImported) {
+	private Goods createMedicalProducts(final int noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
 
 		return new MedicalProducts(goodsDescription, goodsCostPerItem, noOfItems, isImported);
 	}
@@ -94,7 +94,7 @@ public class GoodsFactory {
 	 * @param isImported
 	 * @return
 	 */
-	private Goods createMiscProducts(double noOfItems, String goodsDescription, double goodsCostPerItem, boolean isImported) {
+	private Goods createMiscProducts(final int noOfItems, final String goodsDescription, final double goodsCostPerItem, final boolean isImported) {
 
 		return new MiscGoods(goodsDescription, goodsCostPerItem, noOfItems, isImported);
 	}

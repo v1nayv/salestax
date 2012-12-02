@@ -84,7 +84,7 @@ public class SalesTaxFileInputParser
 			@SuppressWarnings("unused")
 			String line = scanner.findInLine(INPUT_REGEX);
 			MatchResult result = scanner.match();
-			final double noOfItems = Double.parseDouble(result.group(NO_OF_ITEMS_INDEX));
+			final int noOfItems = Integer.parseInt(result.group(NO_OF_ITEMS_INDEX));
 			final String goodsDescription = result.group(GOODS_DESCRIPTION_INDEX);
 			final double goodsCostPerItem = Double.parseDouble(result.group(GOODS_COST_INDEX));
 			final GoodsType goodsType = getGoodsType(goodsDescription);

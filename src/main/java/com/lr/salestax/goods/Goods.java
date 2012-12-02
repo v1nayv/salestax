@@ -16,7 +16,7 @@ public abstract class Goods {
 
 	private final double _goodsCostPerItem;
 
-	private final double _noOfItems;
+	private final int _noOfItems;
 
 	private final boolean _isImported;
 
@@ -36,7 +36,7 @@ public abstract class Goods {
 	 * @param noOfItems no of item.
 	 * @param isImported true if the good is imported
 	 */
-	public Goods(final String goodsDescription, final double goodsCostPerItem, final double noOfItems, final boolean isImported) {
+	public Goods(final String goodsDescription, final double goodsCostPerItem, final int noOfItems, final boolean isImported) {
 		_goodsDescription = goodsDescription;
 		_goodsCostPerItem = goodsCostPerItem;
 		_noOfItems = noOfItems;
@@ -68,7 +68,7 @@ public abstract class Goods {
 	/**
 	 * @return the noOfItems
 	 */
-	public double getNoOfItems() {
+	public int getNoOfItems() {
 		return _noOfItems;
 	}
 

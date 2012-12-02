@@ -21,7 +21,7 @@ public class Books
 	 * @param noOfItems
 	 * @param isImported
 	 */
-	public Books(final String goodsDescription, final double goodsCostPerItem, final double noOfItems, final boolean isImported) {
+	public Books(final String goodsDescription, final double goodsCostPerItem, final int noOfItems, final boolean isImported) {
 		super(goodsDescription, goodsCostPerItem, noOfItems, isImported);
 	}
 
