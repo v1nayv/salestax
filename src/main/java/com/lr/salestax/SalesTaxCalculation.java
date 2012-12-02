@@ -19,9 +19,19 @@ public class SalesTaxCalculation {
 	 */
 	public static void main(String[] args) {
 
-		final InputParser<File> inputParser = new SalesTaxFileInputParser();
-		final Transaction transaction = inputParser.parseInput(new File(args[0]));
-		transaction.compute();
+		if (args.length > 0) {
+			final InputParser<File> inputParser = new SalesTaxFileInputParser();
+			final Transaction transaction = inputParser.parseInput(new File(args[0]));
+			transaction.compute();
+		} else {
+
+			System.out.println("Path to input file needs to be passed as command line arguments.");
+			System.out.println("Sample input file contents :");
+			System.out.println("1 book at 12.49");
+			System.out.println("1 music CD at 14.99");
+			System.out.println("1 chocolate bar at 0.85");
+
+		}
 
 	}
 }
