@@ -1,6 +1,8 @@
 
 package com.lr.salestax.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,16 +110,23 @@ public final class CalculateSalesTaxVisitor
 			total += goods.getImportedDutyTaxAmount();
 		}
 
-		return total + (goods.getNoOfItems() * goods.getGoodsCostPerItem() + goods.getSalesTaxAmount());
+		return total + (goods.getNoOfItems() * goods.getGoodsCostPerItem() + roundOfSalesTax(goods.getSalesTaxAmount()));
 	}
 
 	private void processGoods(final Goods goods) {
 		_total += calculateTotal(goods);
 		_salesTax += goods.getSalesTaxAmount();
 		if (goods.isImported()) {
-			_salesTax += goods.getImportedDutyTaxAmount();
+			_salesTax += roundOfSalesTax(goods.getImportedDutyTaxAmount());
 		}
 		_output.add(goods.getNoOfItems() + " " + goods.getGoodsDescription() + " : " + _decimalFormat.format(calculateTotal(goods)));
+
+	}
+
+	private double roundOfSalesTax(final double value) {
+
+		final BigDecimal salesTax = BigDecimal.valueOf(value);
+		return salesTax.setScale(1, RoundingMode.HALF_UP).setScale(2).doubleValue();
 
 	}
 
