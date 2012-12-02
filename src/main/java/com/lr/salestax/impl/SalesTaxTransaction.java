@@ -1,7 +1,6 @@
 
 package com.lr.salestax.impl;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,14 +57,13 @@ public class SalesTaxTransaction
 	 * @param salesTaxVisitor
 	 */
 	private void printOutput(CalculateSalesTaxVisitor salesTaxVisitor) {
-		final DecimalFormat df = new DecimalFormat("#.##");
 		for (final String output : salesTaxVisitor.getOutput()) {
 
 			System.out.println(output);
 		}
 
-		System.out.println("Sales Taxes :" + df.format(salesTaxVisitor.getSalesTax()));
-		System.out.println("Total :" + df.format(salesTaxVisitor.getTotal()));
+		System.out.println("Sales Taxes :" + salesTaxVisitor.getSalesTaxAsString());
+		System.out.println("Total :" + salesTaxVisitor.getTotalAsString());
 	}
 
 }

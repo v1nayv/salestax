@@ -56,10 +56,24 @@ public final class CalculateSalesTaxVisitor
 	}
 
 	/**
+	 * @return salesTax with format #.##
+	 */
+	public String getSalesTaxAsString() {
+		return _decimalFormat.format(_salesTax);
+	}
+
+	/**
 	 * @return the total
 	 */
 	public double getTotal() {
 		return _total;
+	}
+
+	/**
+	 * @return total with format #.##
+	 */
+	public String getTotalAsString() {
+		return _decimalFormat.format(_total);
 	}
 
 	/**
